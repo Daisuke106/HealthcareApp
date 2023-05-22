@@ -40,6 +40,7 @@
                 </h1>
                 
                 
+                
                 <div class="member_buttonarea">
                     <input type="member_registration" id="open-popup-button" value="会員登録">
                     <input type="login"   id="login-btn" value="ログイン">
@@ -49,7 +50,9 @@
             
         
         <div id="popup-overlay">
+          @foreach ($posts as $post)
           <div id="popup-content">
+            
             <h2>会員登録</h2>
             <form>
               <!-- フォームの内容をここに追加 -->
@@ -64,6 +67,7 @@
             </form>
             <button id="close-popup-button">閉じる</button>
           </div>
+          @endforeach
         </div>
         
 
@@ -174,7 +178,8 @@
     <div class="sidebar">
         <div class="sidebar-frame">
             <h1>サイドメニュー</h1>
-            <h2>ようこそ！ <a href="#">山口</a> さん</h2>
+            <h2>ようこそ！ <a href="#">{{ Auth::user()->name }}</a> さん</h2>
+            
             
             <input type="button" id="mypage" value="マイページ"/>
             
