@@ -46,7 +46,6 @@
                                                         CLINIC SERCH<br>クリニック検索</a></li>
                         <li><a href="../top_page/acsess.html">
                                                         CONTACT<br>お問い合わせ</a></li>
-        
                     </ul>
             
                 </div>

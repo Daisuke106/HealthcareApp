@@ -51,6 +51,7 @@
         
         <div id="popup-overlay">
           @foreach ($posts as $post)
+          @endforeach
           <div id="popup-content">
             
             <h2>会員登録</h2>
@@ -67,7 +68,7 @@
             </form>
             <button id="close-popup-button">閉じる</button>
           </div>
-          @endforeach
+          
         </div>
         
 
@@ -95,7 +96,7 @@
                     <ul>
                         <li><a href="/">
                                                         TOP PAGE<br>トップページ</a></li>
-                        <li><a href="/news">
+                        <li><a href="/news/">
                                                         NEWS<br>ニュース</a></li>
                         <li><a href="../myfavorite2/index.html">
                                                         BLOG<br>ブログ</a></li>

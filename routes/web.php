@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\NewsController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -32,8 +33,8 @@ Route::middleware('auth')->group(function () {
 // Route::get('/', [UserController::class, 'index'])->name('index');
 
 
-// Route::get('/posts/{post}', [UserController::class ,'show']);
-Route::get('/', [UserController::class, 'index'])->middleware('auth');
+Route::get('/news', [UserController::class ,'news']);
+// Route::get('/', [UserController::class, 'index'])->middleware('auth');
 
 
 
