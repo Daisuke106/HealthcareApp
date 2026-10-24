@@ -7,6 +7,42 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
+## PHP runtime and security update
+
+This application requires PHP **8.2.35 or a later 8.2 patch release**
+(`~8.2.35` in `composer.json` and `composer.lock`). PHP 8.2.35 fixes
+CVE-2026-109618 and CVE-2026-109619. PHP 8.3 and later are excluded because
+the locked `nette/schema` 1.2.3 and `nette/utils` 4.0.0 require PHP below 8.3.
+
+The repository specifies the required runtime, but does not record the PHP
+version currently running on the production server. For the Heroku deployment
+configured in `Procfile`, rebuild and redeploy with the updated Composer files
+so the PHP buildpack selects a patched runtime. For other deployments, upgrade
+the installed PHP runtime separately and restart all PHP workers.
+
+Verify the runtime and dependencies after updating:
+
+```sh
+php -v
+composer install --no-interaction --prefer-dist
+composer check-platform-reqs
+```
+
+Confirm the deployed web runtime as well as the CLI uses PHP 8.2.35 or later
+in the 8.2 series. A merged PR alone does not update an already running server.
+
+The PHP advisory dated October 23, 2026 also recommends disabling session upload
+progress until the next bugfix release. Set `session.upload_progress.enabled=0`
+in `php.ini` or the server/FPM configuration that applies before request parsing,
+and restart every PHP worker. Application-level `ini_set()` and FPM `.user.ini`
+are insufficient for this mitigation.
+
+References:
+
+- [PHP security advisory and session upload progress follow-up](https://www.php.net/index.php#2026-10-21-5)
+- [IPA security alert](https://www.ipa.go.jp/security/security-alert/2026/alert20261022.html)
+- [Heroku PHP runtime selection](https://devcenter.heroku.com/articles/php-support#selecting-a-runtime)
+
 ## About Laravel
 
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
