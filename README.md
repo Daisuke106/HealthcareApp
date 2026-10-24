@@ -7,6 +7,10 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
+## 新しいHerokuアカウントへのデプロイ
+
+空のデータベースから起動する手順は [Heroku新規デプロイ手順](docs/heroku-new-app.md) を参照してください。
+
 ## PHP runtime and security update
 
 This application requires PHP **8.2.35 or a later 8.2 patch release**
